@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Ronin face</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </head>
+
+    <body style="background-color: #d7ddff">
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top" style="background-color: #536eff">  
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a style="color:white" class="nav-link" th:href="@{'/user/' + ${#authentication.name}}">Your page</a>
+                        </li>
+                        <li class="nav-item">
+                            <a style="color:white" class="nav-link" th:href="@{'/user/' + ${#authentication.name} + '/images'}">Your images</a>
+                        </li>
+                        <li class="nav-item">
+                            <a style="color:white" class="nav-link" th:href="@{'/user/' + ${#authentication.name} + '/friends'}">Your friends</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <form name="searchrequest" th:action="@{'/search'}" method="get">           
+                                <input type="text" name="filter" placeholder=" Search for users"/>
+                                <button type="submit" class="btn btn-light">Search</button>
+                            </form>
+                        </li>
+                        &nbsp;
+                        <li class="nav-item">
+                            <form name="logout" action="/logout" method="post">               
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-danger">Log out</button>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="container" style="margin-top:75px;">
+            <div class="alert alert-danger" th:if="${param.error}" th:text="${param.error}"/>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div style="margin:3%;"class="card">
+                        <h6 style="margin:1%" th:text="'Search results for: ' + ${param.filter}"> Search results </h6>
+                        <div style="margin:1%" th:each="result : ${results}">
+                            <span>
+                                <img style="max-height:90px; max-width:90px" th:src="@{'/user/' + ${result.username} + '/images/' + ${result.profilepic} + '/content/'}"/>
+                                <a th:href="@{'/user/' + ${result.username}}" th:text="${result.name}"> tuloksen sivut</a>
+                            </span>
+                        </div>
+                        <div style="margin:1%" th:if="${results.size()} == 0">
+                            <p> Nobody with that name on this app. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

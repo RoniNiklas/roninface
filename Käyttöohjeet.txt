@@ -1,0 +1,61 @@
+﻿Herokussa: https://roninface.herokuapp.com/
+
+Käyttöohjeet:
+
+Kaikki toiminnot toteutettu, paitsi ei ollenkaan testejä.
+
+Databasesta: 
+
+	Valmiita käyttäjiä, jos et poista databasea:
+
+		Käyttäjätunnus: make 
+
+		Salasana: salasana
+
+		Käyttäjätunnus: maija
+
+		Salasana: salasana
+
+		Käyttäjätunnus: markus 
+
+		Salasana: salasana
+
+	Alussa make ja maija ovat kavereita keskenään ja markuksella ei ole kavereita. Maken sivustolla on tekstiä ja kuvia enemmän kuin muilla.
+
+	Jos poistat databasen, tai noilla käyttäjillä ei pääse sisään,
+
+	niin käy sivulla localhost:8080/test ennenkuin koitat käyttää sivustoa,
+
+	koska uusien käyttäjien default profiilikuva tuodaan tietokantaan vasta tuon pathin kontrollerissa, 
+
+	niin sivusto saattaa toimia hassusti ilman siellä käyntiä! :D
+
+        Herokussa ei pitäisi olla tarpeen, sillä sivusto on alustettu jo käyttövalmiiksi.
+
+Uuden käyttäjän luomisesta:
+
+	Huomaa, että käyttäjätunnus ja urlin identifier on sama asia. Esim. käyttäjätunnuksen make seinä löytyy urlista: localhost:8080/user/make
+
+	Uuden käyttäjän Full Namessa pitää olla välilyönti, salasanassa 8 merkkiä. Lisäksi käyttäjän full namen ja usernamen tulee olla uniikkeja.
+
+Näkymästä:
+
+	Sivulla on 5 näkymää. Login/newaccount näkymä, käyttäjän seinä, käyttäjän kuvat, omat kaverit ja hakusivu.
+
+	Login/newaccount näkymää lukuunottamatta yläpalkissa on linkit omalle seinälle, omiin kuviin, omiin kavereihin ja hakuun.
+
+	Jos olet jonkun käyttäjän seinää tai kuvia katsomassa, niin näkymässä on erillinen ruutu, jossa on linkit tämän henkilön seinälle ja kuviin ja mahdollisuus pyytää henkilöä kaveriksi/poistaa se kavereista.
+
+	Kuvat, paitsi profiilikuva, näkyvät vain itselle ja kavereille.
+
+	Seinälle kirjoitetut jutut näkyvät vain itselle ja kavereille.
+
+	Seinälle voi kirjoittaa vain itse ja kaverit.
+
+	Kuviin ja viesteihin voi kommentoida vain itse ja kaverit.
+
+        Ainoastaan oma kaverilista pitäisi olla nähtävissä. Ei koskaan muiden käyttäjien.
+
+Hausta:
+
+	Haku vaatii search nappulan painamista. Painamalla search nappulaa ilman tekstiä input formissa saa listattua kaikki käyttäjät. Muuten se etsii nimen ja käyttäjänimen pohjalta.

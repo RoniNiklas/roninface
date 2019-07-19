@@ -1,0 +1,16 @@
+projekti\Account.class
+projekti\ViestiRepo.class
+projekti\KuvaViestiRepo.class
+projekti\CustomUserDetailsService.class
+projekti\ImgObj.class
+projekti\ImageController.class
+projekti\SecurityConfiguration.class
+projekti\DefaultController.class
+projekti\AccountController.class
+projekti\KuvaViesti.class
+projekti\AccountRepository.class
+projekti\FriendRequest.class
+projekti\Viesti.class
+projekti\MyApplication.class
+projekti\FriendRequestRepo.class
+projekti\ImgObjRepo.class

@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Hello world</title>
+    </head>
+    <body>
+        <header th:if="${authentication}">
+            <a th:href="@{'/front'}">Front page</a>
+            <a th:href="@{'/user/' + ${#authentication.name}}">Your page</a>
+            <a th:href="@{'/user/' + ${#authentication.name} + '/friends'}">Your friends</a>
+        </header>
+        <form name="logout" action="/logout" method="post">               
+            <fieldset>
+                <legend>Log out</legend>
+                <div class="form-actions">
+                    <button type="submit" class="btn">Log out</button>
+                </div>
+            </fieldset>
+        </form>
+    </body>
+</html>
